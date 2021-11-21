@@ -4,9 +4,6 @@ import User from "../common/User";
 import useStore from "../../hooks/useStore";
 
 export default function Task({task}) {
-    useEffect(()=> {
-        console.log(task, "123123")
-    },[])
     return(
         <CardContent>
             <Typography color="textPrimary" gutterBottom style={{fontSize: 18}}>

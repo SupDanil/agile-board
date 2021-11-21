@@ -1,7 +1,8 @@
 import {observer} from 'mobx-react-lite'
-import {AppBar, Box, FormControl, Grid, MenuItem, Select, Toolbar, Typography} from "@mui/material";
+import {AppBar, Box, FormControl, Grid,  Select, Toolbar, Typography} from "@mui/material";
 import useStore from "../../hooks/useStore";
 import User from "../common/User";
+import {useEffect} from "react";
 
 function Header() {
     const {boards, users} = useStore();
@@ -21,16 +22,20 @@ function Header() {
                                         backgroundColor: 'white',
                                         marginLeft: 10,
                                     }}
+                                    native
                                     value={boards?.active?.id || ''}
-                                    onChange={() => {
+                                    onChange={(event) => {
+                                        const {value} = event.target;
+
+                                        boards.selectBoard(value);
                                     }}
                                 >
-                                    <MenuItem value="" disabled>
+                                    <option value="" disabled>
                                         -
-                                    </MenuItem>
+                                    </option>
                                     {boards.list.map(b => {
                                         return (
-                                            <MenuItem key={b.id} value={b?.id}>{b?.title}</MenuItem>
+                                            <option key={b.id} value={b?.id}>{b?.title}</option>
                                         )
                                     })}
                                 </Select>

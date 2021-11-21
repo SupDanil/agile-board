@@ -13,9 +13,6 @@ function getItemStyle(draggableStyle) {
 }
 
 function Column({section}) {
-    useEffect(()=>{
-        console.log(JSON.stringify(section.tasks))
-    },[])
     return (
         <div>
             {section?.tasks?.map((task, index) => {
