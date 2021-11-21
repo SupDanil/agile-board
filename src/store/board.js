@@ -68,7 +68,6 @@ const BoardStore = types.model('BoardStore', {
         },
         load: flow(function* () {
             self.boards = yield apiCall.get('boards');
-            self.active = "MAIN";
         }),
         afterCreate() {
             self.load()
